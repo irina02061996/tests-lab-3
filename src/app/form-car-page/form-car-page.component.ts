@@ -8,94 +8,101 @@ import {ErrorMessage} from '../shared/models/error-message';
 declare let $: any;
 
 @Component({
-  selector: 'app-form-car-page',
-  templateUrl: './form-car-page.component.html',
-  styleUrls: ['./form-car-page.component.scss']
+    selector: 'app-form-car-page',
+    templateUrl: './form-car-page.component.html',
+    styleUrls: ['./form-car-page.component.scss']
 })
 export class FormCarPageComponent implements OnInit {
 
-  id: number;
+    id: number;
 
-  car: Car;
+    car: Car;
 
-  form: FormGroup;
+    form: FormGroup;
 
-  colors = [
-    'red',
-    'blue',
-    'yellow',
-    'green',
-    'pink'
-  ];
+    description;
+    year;
 
-  errorMessage: ErrorMessage;
+    colors = [
+        'red',
+        'blue',
+        'yellow',
+        'green',
+        'pink'
+    ];
 
-  constructor(private route: ActivatedRoute,
-              private carsService: CarsService,
-              private router: Router) {
-  }
+    errorMessage: ErrorMessage;
 
-  ngOnInit() {
-    this.id = +this.route.snapshot.params['id'];
-    this.getCar();
-
-    this.form = new FormGroup({
-      'color': new FormControl(
-        this.colors[0],
-        []),
-      'description': new FormControl(
-        null,
-        [Validators.required]),
-      'year': new FormControl(
-        null,
-        [Validators.required])
-
-    });
-  }
-
-  getCar() {
-    this.carsService.getCarById(this.id)
-      .subscribe(car => {
-        this.car = car;
-
-        this.form.get('description').setValue(this.car.description);
-        this.form.get('year').setValue(this.car.year);
-      });
-  }
-
-  onSubmit() {
-
-    if (this.form.valid) {
-
-      this.car.color = this.form.value.color;
-      this.car.description = this.form.value.description;
-      this.car.year = this.form.value.year;
-
-      this.carsService.changeCar(this.car)
-        .subscribe(car =>
-          this.router.navigate(['', this.car.id]));
-
-    } else {
-      this.showMessage({
-        text: 'Форма содержит ошибки',
-        type: 'danger'
-      });
+    constructor(private route: ActivatedRoute,
+                private carsService: CarsService,
+                private router: Router) {
     }
 
-  }
+    ngOnInit() {
+        this.id = +this.route.snapshot.params['id'];
+        this.getCar();
+
+        this.form = new FormGroup({
+            'color': new FormControl(
+                this.colors[0],
+                []),
+            'description': new FormControl(
+                null,
+                [Validators.required]),
+            'year': new FormControl(
+                null,
+                [Validators.required])
+
+        });
+    }
+
+    getCar() {
+        this.carsService.getCarById(this.id)
+            .subscribe(car => {
+                this.car = car;
+
+                this.description = this.car.description;
+                this.year = this.car.year;
+            });
+    }
+
+    onSubmit() {
+
+        // this.showMessage({
+        //     text: 'Форма содержит ошибки',
+        //     type: 'danger'
+        // });
+
+        if (this.form.valid && this.description !== '' && this.year !== '') {
+
+          this.car.color = this.form.value.color;
+          this.car.description = this.form.value.description;
+          this.car.year = this.form.value.year;
+
+          this.carsService.changeCar(this.car)
+            .subscribe(car =>
+              this.router.navigate(['', this.car.id]));
+
+        } else {
+          this.showMessage({
+            text: 'Форма содержит ошибки',
+            type: 'danger'
+          });
+        }
+    }
 
 
-  showMessage(errorMessage: ErrorMessage) {
-    this.errorMessage = errorMessage;
+    showMessage(errorMessage: ErrorMessage) {
+        this.errorMessage = errorMessage;
 
-    $('.alert').css({
-      'display': 'block'
-    });
+        $('.alert').css({
+            'display': 'block'
+        });
 
-    window.setTimeout(() => {
-      $('.alert').css({
-        'display': 'none'
-      });
-    }, 3000);
-  }
+        window.setTimeout(() => {
+            $('.alert').css({
+                'display': 'none'
+            });
+        }, 3000);
+    }
 }

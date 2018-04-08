@@ -1,31 +1,101 @@
-import {AppPage} from './page-objects/app.po';
-import {by, element} from 'protractor';
+
+import {browser, by, element, protractor} from 'protractor';
 
 describe('angular-project App', () => {
-  let page: AppPage;
 
-  const viewButton = element(by.id('btn-view'));
+    beforeEach(() => {
+        browser.get('/');
+    });
 
-  // var firstNumber = element(by.model('first'));
-  // var secondNumber = element(by.model('second'));
-  //
-  // var latestResult = element(by.binding('latest'));
+    it('should have a title', function () {
+        expect(element(by.css('app-root h1')).getText()).toEqual('Менеджер машин');
+    });
 
-  beforeEach(() => {
-    page = new AppPage();
-    page.navigateToHome();
-  });
+    it('test1', () => {
 
-  it('should have a title', function() {
-    expect(page.getTitleText()).toEqual('Менеджер машин');
-  });
+        element.all(by.css('.list-group li')).then(function (items) {
+            expect(items.length).toBe(3);
+        });
 
-  it('should display title', () => {
-    viewButton.click();
+        element.all(by.css('.list-group li button')).then(function (items) {
+            expect(items.length).toBe(3);
+            items[0].click();
+        });
 
-    // page.navigateToCar();
-    // page.navigateToUpdateCar();
-    //
-    // expect(page.getTitleText()).toEqual('Менеджер машин');
-  });
+        element.all(by.css('.cars li')).then(function (items) {
+            expect(items.length).toBe(3);
+
+            const color = items[0].getText();
+            expect(color).toBe('Цвет: red');
+
+            const description = items[1].getText();
+            expect(description).toBe('Описание: Отличная машина');
+
+            const year = items[2].getText();
+            expect(year).toBe('Год: 2015');
+        });
+    });
+
+    it('test2', () => {
+
+        element.all(by.css('.list-group li button')).then(function (items) {
+            expect(items.length).toBe(3);
+            items[0].click();
+        });
+
+        const btnUpdate = element(by.id('btn-update'));
+        btnUpdate.click();
+
+        element.all(by.css('form .form-group')).then(formGroups => {
+            expect(formGroups.length).toBe(3);
+
+            element.all(by.css('.description')).all(by.css('.form-control')).then(controls => {
+                expect(controls.length).toBe(1);
+                controls[0].clear();
+                controls[0].sendKeys('Отличная машина');
+            });
+
+            element.all(by.css('.year')).all(by.css('.form-control')).then(controls => {
+                expect(controls.length).toBe(1);
+                controls[0].clear();
+                controls[0].sendKeys('2015');
+            });
+        });
+
+        const btnSubmit = element(by.id('btn-submit'));
+        btnSubmit.click();
+    });
+
+
+    it('test3', () => {
+
+        element.all(by.css('.list-group li button')).then(function (items) {
+            expect(items.length).toBe(3);
+            items[0].click();
+        });
+
+        const btnUpdate = element(by.id('btn-update'));
+        btnUpdate.click();
+
+        element.all(by.css('form .form-group')).then(formGroups => {
+            expect(formGroups.length).toBe(3);
+
+            element.all(by.css('.description')).all(by.css('.form-control')).then(controls => {
+                expect(controls.length).toBe(1);
+                controls[0].clear();
+            });
+
+            element.all(by.css('.year')).all(by.css('.form-control')).then(controls => {
+                expect(controls.length).toBe(1);
+                controls[0].clear();
+            });
+        });
+
+        const btnSubmit = element(by.id('btn-submit'));
+        btnSubmit.click();
+
+        const messageBlock = element(by.css('.message-block'));
+        expect(browser.isElementPresent(messageBlock)).toBe(true);
+    });
 });
+

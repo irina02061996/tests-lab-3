@@ -2,9 +2,9 @@
   "cars": [
     {
       "name": "BMW",
-      "color": "green",
-      "description": "Хорошая машина",
-      "year": "2010",
+      "color": "red",
+      "description": "Отличная машина",
+      "year": "2015",
       "id": 1
     },
     {

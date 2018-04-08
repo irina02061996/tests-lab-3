@@ -1,27 +1,24 @@
 <div class="col-12">
-  <h3 class="title" *ngIf="car" style="margin-top:30px">{{car.name}}</h3>
+    <h3 class="title" *ngIf="car" style="margin-top:30px">{{car.name}}</h3>
 
-  <hr style="margin-bottom:30px">
+    <hr style="margin-bottom:30px">
 
-  <div class="row" *ngIf="car">
-    <div class="col-12">
-      <span class="title">Цвет: {{car.color}}</span>
+    <div class="row" *ngIf="car">
+        <ul class="cars col-12">
+            <li class="title">Цвет: {{car.color}}</li>
+            <li class="title">Описание: {{car.description}}</li>
+            <li class="title">Год: {{car.year}}</li>
+        </ul>
     </div>
-    <div class="col-12">
-      <span class="title">Описание: {{car.description}}</span>
-    </div>
-    <div class="col-12">
-      <span class="title">Год: {{car.year}}</span>
-    </div>
-  </div>
 
-  <hr style="margin-top:30px">
+    <hr style="margin-top:30px">
 
-  <button *ngIf="car"
-    class="btn btn-xs btn-success"
-    [routerLink]="['/update', car.id]">
-    Изменить
-  </button>
+    <button *ngIf="car"
+            id="btn-update"
+            class="btn btn-success"
+            [routerLink]="['/update', car.id]">
+        Изменить
+    </button>
 
 </div>
 

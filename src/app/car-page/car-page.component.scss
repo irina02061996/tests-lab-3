@@ -1,1 +1,7 @@
 @import "../cars-page/cars-page.component";
+
+ul {
+  li.title {
+    list-style-type: none;
+  }
+}

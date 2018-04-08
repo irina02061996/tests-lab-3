@@ -1,85 +1,93 @@
 <div class="col-12">
-  <h3 *ngIf="car" style="margin-top:30px">{{car.name}}</h3>
+    <h3 *ngIf="car" style="margin-top:30px">{{car.name}}</h3>
 
-  <hr style="margin-bottom:30px">
+    <hr style="margin-bottom:30px">
 
-  <div class="message-block">
-    <div
-      *ngIf="errorMessage"
-      class="alert alert-{{errorMessage.type}}">
-      {{errorMessage.text}}
-    </div>
-  </div>
-
-  <form
-    class="row form"
-    *ngIf="car"
-    [formGroup]="form"
-  >
-
-
-    <div class="col-12">
-      <span>Цвет</span>
-      <div
-        class="form-group"
-        *ngIf="colors"
-        [ngClass]="{'has-error': form.get('color').invalid && form.get('color').touched}">
-
-        <select class="form-control"
-                formControlName="color"
-        >
-          <option *ngFor="let color of colors; let i = index">
-            {{color}}
-          </option>
-        </select>
-
-      </div>
+    <div class="message-block">
+        <div
+                *ngIf="errorMessage"
+                class="alert alert-{{errorMessage.type}}">
+            {{errorMessage.text}}
+        </div>
     </div>
 
+    <form
+            class="row form"
+            *ngIf="car"
+            [formGroup]="form"
+    >
 
-    <div class="col-12">
-      <span class="title">Описание</span>
 
-      <div
-        class="form-group"
-        [ngClass]="{'has-error': form.get('description').invalid && form.get('description').touched}">
+        <div class="col-12">
+            <span>Цвет</span>
+            <div
+                    class="form-group"
+                    *ngIf="colors"
+                    [ngClass]="{'has-error': form.get('color').invalid && form.get('color').touched}">
 
-        <textarea class="form-control" formControlName="description"></textarea>
+                <select class="form-control"
+                        formControlName="color"
+                        id="color"
+                >
+                    <option *ngFor="let color of colors; let i = index">
+                        {{color}}
+                    </option>
+                </select>
 
-        <div class="help-text"
-             *ngIf="form.get('description').invalid && form.get('description').touched">
+            </div>
+        </div>
+
+
+        <div class="col-12">
+            <span class="title">Описание</span>
+
+            <div
+                    class="description form-group"
+                    [ngClass]="{'has-error': form.get('description').invalid && form.get('description').touched}">
+
+        <textarea
+                class="form-control"
+                formControlName="description"
+                [(ngModel)]="description"
+                ></textarea>
+
+                <div class="help-text"
+                     *ngIf="form.get('description').invalid && form.get('description').touched">
                            <span *ngIf="form.get('description')['errors']['required']">
                 Поле не может быть пустым</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="col-12">
-      <span class="title">Год</span>
-      <div
-        class="form-group"
-        [ngClass]="{'has-error': form.get('year').invalid && form.get('year').touched}">
+        <div class="col-12">
+            <span class="title">Год</span>
+            <div
+                    class="year form-group"
+                    [ngClass]="{'has-error': form.get('year').invalid && form.get('year').touched}">
 
-        <input
-          class="form-control"
-          formControlName="year"/>
+                <input
+                        class="form-control"
+                        formControlName="year"
+                        [(ngModel)]="year"
+                        />
 
-        <div class="help-text"
-             *ngIf="form.get('year').invalid && form.get('year').touched">
-          <span>Поле не может быть пустым </span>
+                <div class="help-text"
+                     *ngIf="form.get('year').invalid && form.get('year').touched">
+                    <span>Поле не может быть пустым </span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-  </form>
+    </form>
 
-  <hr style="margin-top:30px">
+    <hr style="margin-top:30px">
 
-  <button
-    (click)="onSubmit()"
-    class="btn btn-primary">
-    Сохранить
-  </button>
+    <button
+            id="btn-submit"
+            (click)="onSubmit()"
+            class="btn btn-primary">
+        Сохранить
+    </button>
 
 </div>
 
