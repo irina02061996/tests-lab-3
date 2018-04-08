@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {CarsService} from '../../shared/services/cars.service';
-import {Car} from '../../shared/models/car';
+import {CarsService} from '../shared/services/cars.service';
+import {Car} from '../shared/models/car';
 
 @Component({
   selector: 'app-car-page',

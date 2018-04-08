@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CarsService} from '../../shared/services/cars.service';
+import {CarsService} from '../shared/services/cars.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Car} from '../../shared/models/car';
+import {Car} from '../shared/models/car';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ErrorMessage} from '../../shared/models/error-message';
+import {ErrorMessage} from '../shared/models/error-message';
 
 declare let $: any;
 

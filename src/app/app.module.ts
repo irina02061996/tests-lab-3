@@ -10,10 +10,10 @@ import {
 
 import {AppComponent} from './app.component';
 import {CarsPageComponent} from './cars-page/cars-page.component';
-import {CarPageComponent} from './cars-page/components/car-page/car-page.component';
+import {CarPageComponent} from './car-page/car-page.component';
 
-import {CarsService} from './cars-page/shared/services/cars.service';
-import { FormCarPageComponent } from './cars-page/components/form-car-page/form-car-page.component';
+import {CarsService} from './shared/services/cars.service';
+import { FormCarPageComponent } from './form-car-page/form-car-page.component';
 
 
 
