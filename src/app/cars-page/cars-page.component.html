@@ -1,0 +1,22 @@
+
+  <div class="col-12">
+    <h1 style="margin-top:30px">Менеджер машин</h1>
+
+    <hr style="margin-bottom:30px">
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let car of cars">
+      <span class="badge" [ngStyle]="{background: car. color}">
+        {{car.id}}
+      </span>
+        {{car.name}}
+
+        <button
+          class="btn btn-xs.btn-info"
+          [routerLink]="['', car.id]">
+          Просмотреть
+        </button>
+
+      </li>
+    </ul>
+  </div>

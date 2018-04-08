@@ -1,0 +1,83 @@
+
+html {
+  font-size: 12px;
+}
+
+body {
+  color: #77766c;
+  font-size: 1.4rem !important;
+  font-family: Helvetica Neue, sans-serif !important;
+}
+
+p {
+  font-size: 2.8rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media(max-width: 767px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+.selector-for-some-widget {
+
+  box-sizing: content-box;
+}
+
+textarea:hover,
+textarea:active,
+textarea:focus,
+button:focus,
+button:active,
+button:hover,
+.btn.active,
+.btn:focus {
+  box-shadow: none !important;
+  outline-offset: 0 !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+}
+
+
+.btn {
+  cursor: pointer;
+
+  border-style: solid;
+  border-radius: inherit;
+
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+
+@mixin app-shadow-block  {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+
+
+.form-control, .form-group {
+  text-align: center;
+}
+
+input[placeholder] {
+  color: #77766c;
+}
+
+input[type="text"], input[type="password"] {
+  color: #77766c;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #77766c;
+  border-radius: 0;
+}
+
+// заполнение инпут (по умолчанию желтый)
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #FFFFFF !important;
+}
+

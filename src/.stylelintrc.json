@@ -1,0 +1,34 @@
+{
+  "rules": {
+    "selector-type-no-unknown": [
+      true,
+      {
+        "message": "Такого элемента не существует"
+      }
+    ],
+    "selector-list-comma-newline-after": [
+      "always",
+      {
+        "message": "Каждый селектор должен быть на новой строке"
+      }
+    ],
+    "string-quotes": [
+      "double",
+      {
+        "message": "Ожидаются двойные кавычки"
+      }
+    ],
+    "indentation": [
+      2,
+      {
+        "message": "Отступы должны быть кратны 2-м пробелам"
+      }
+    ],
+    "declaration-no-important": [
+      true,
+      {
+        "message": "Не следует использовать !important"
+      }
+    ]
+  }
+}

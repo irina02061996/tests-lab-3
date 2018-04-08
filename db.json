@@ -1,0 +1,25 @@
+{
+  "cars": [
+    {
+      "name": "BMW",
+      "color": "green",
+      "description": "Хорошая машина",
+      "year": "2010",
+      "id": 1
+    },
+    {
+      "name": "Москвич",
+      "color": "blue",
+      "description": "Качественная",
+      "year": "2005",
+      "id": 2
+    },
+    {
+      "name": "Audi",
+      "color": "yellow",
+      "description": "Недорогая",
+      "year": "2000",
+      "id": 3
+    }
+  ]
+}

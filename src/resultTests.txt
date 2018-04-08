@@ -1,0 +1,15 @@
+
+app/app.component.scss
+ 10:6  ✖  Каждый селектор должен быть на новой строке  selector-list-comma-newline-after
+
+styles.scss
+   8:22  ✖  Не следует использовать !important           declaration-no-important         
+   9:44  ✖  Не следует использовать !important           declaration-no-important         
+  40:21  ✖  Не следует использовать !important           declaration-no-important         
+  41:22  ✖  Не следует использовать !important           declaration-no-important         
+  42:15  ✖  Не следует использовать !important           declaration-no-important         
+  43:29  ✖  Не следует использовать !important           declaration-no-important         
+ 108:14  ✖  Каждый селектор должен быть на новой строке  selector-list-comma-newline-after
+ 116:19  ✖  Каждый селектор должен быть на новой строке  selector-list-comma-newline-after
+ 126:49  ✖  Не следует использовать !important           declaration-no-important
+

@@ -1,0 +1,35 @@
+@import "./../../cars-page.component.scss";
+
+.message-block {
+  height: 50px;;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+
+.alert {
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+.alert-danger {
+  background-color: #DD8A72;
+  color: #F9F4F0;
+}
+
+.has-error {
+  color: #DD8A72;
+  font-size: 12px;
+
+  input, textarea {
+    border-color: #DD8A72;
+  }
+}
+
+.help-text {
+  margin-left: 13px;
+  margin-top: 5px;
+  height: 15px;
+}
